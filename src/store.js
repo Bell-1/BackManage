@@ -7,28 +7,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		alertMsg: {
-			show: false,
-			content: '',
-			type: 'error'
-		},
+		http: null,
 	},
 	mutations: {
-		showAlert(state, data) {
-			state.alertMsg.show = data.show;
-			if (data.show) {
-				state.alertMsg.content = data.content || '';
-				state.alertMsg.type = data.type || 'success';
-			}
-		}
+		/**
+		 * 设置store中的全局 http
+		 * @param {*} state 
+		 * @param {*} http 
+		 */
+		setHttp(state, http){
+			state.http = http;
+		},
 	},
 	actions: {
-		showAlert({ commit }, data) {
-			commit('showAlert', { show: true, ...data });
-			setTimeout(() => {
-				commit('showAlert', { show: false, ...data });
-			}, 2000)
-		}
 	},
 	modules: {
 		user

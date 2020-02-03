@@ -1,17 +1,13 @@
-import '@babel/polyfill'
 import Vue from 'vue'
-import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import http from './share/http.js'
-import './registerServiceWorker'
-import 'roboto-fontface/css/roboto/roboto-fontface.css'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import './scss/reset.css'
+import http from './units/http.js'
+
 import './scss/global.scss'
-Vue.config.productionTip = false
+
 Vue.prototype.$http = http;
+store.commit('setHttp', http);
 
 new Vue({
 	router,
